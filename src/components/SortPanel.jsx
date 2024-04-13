@@ -9,11 +9,11 @@ export default class SortPanel extends Component {
   }
 
   toggleChange = () => {
+    let isSortCheked = !this.state.isSortCheked;
     this.setState({
-      isSortCheked: !this.state.isSortCheked,
+      isSortCheked: isSortCheked,
     });
-    console.log(this.state.isSortCheked);
-    this.props.onUpdateSort(this.state.isSortCheked);
+    this.props.onUpdateSort(isSortCheked);
   };
 
   render() {

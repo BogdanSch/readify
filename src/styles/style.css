@@ -1,0 +1,12 @@
+.wrapper {
+    overflow: hidden;
+}
+
+body {
+    background-color: #f7f7f7;
+}
+
+.footer a,
+.footer p {
+    color: #f7f7f7 !important;
+}

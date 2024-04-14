@@ -6,7 +6,7 @@ import Footer from "./components/Footer.jsx";
 import BookItem from "./components/BookItem.jsx";
 import BooksSum from "./components/BooksSum.jsx";
 import BooksCount from "./components/BooksCount.jsx";
-import SearchPanel from "./components/SearchPannel.jsx";
+import SearchPanel from "./components/SearchPanel.jsx";
 import SortPanel from "./components/SortPanel.jsx";
 
 const CURRENCY = `$`;
@@ -34,20 +34,29 @@ const App = () => {
     setBooks(updateBooks);
   };
   const addBookToCart = (book) => {
-    let goods = [...cart];
-    goods.length && goods.includes(book) ? book.count++ : goods.push(book);
-    setBookData(goods);
-    setCart(goods);
+    let updatedCart;
+    const existingBook = cart.find((item) => item.id === book.id);
+    if (existingBook) {
+      existingBook.count++;
+      updatedCart = [...cart];
+    } else {
+      updatedCart = [...cart, { ...book, count: 1 }];
+    }
+    setCart(updatedCart);
+    setBookData(updatedCart);
   };
+
   const deleteBookFromCart = (book) => {
-    let goods =
-      book.count === 1
-        ? cart.filter((item) => item.id !== book.id)
-        : cart.filter((item) =>
-            item.id === book.id ? book.count-- : book.count
-          );
-    setBookData(goods);
-    setCart(goods);
+    let updatedCart;
+    const existingBook = cart.find((item) => item.id === book.id);
+    if (existingBook.count === 1) {
+      updatedCart = cart.filter((item) => item.id !== book.id);
+    } else {
+      existingBook.count--;
+      updatedCart = [...cart];
+    }
+    setCart(updatedCart);
+    setBookData(updatedCart);
   };
 
   const onUpdateSearch = (term) => {

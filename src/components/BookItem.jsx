@@ -15,7 +15,7 @@ const BookItem = (props) => {
       </div>
       <button
         onClick={props.removeBook.bind(null, props.book)}
-        className="add_item btn btn-lg btn-warning"
+        className="btn btn-lg btn-warning"
       >
         Видалити
       </button>

@@ -6,8 +6,7 @@ const books = [
     stocked: true,
     name: "Десять негритят",
     author: "Агата Крісті",
-    imageCover:
-      "https://upload.wikimedia.org/wikipedia/en/4/4a/And_Then_There_Were_None_First_Edition_Cover_1939.jpg",
+    imageCover: "https://images.prom.ua/4872656290_desyat-negrenyat-agata.jpg",
     count: 1,
   },
   {

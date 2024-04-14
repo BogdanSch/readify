@@ -3,7 +3,12 @@ const BooksSum = (props) => {
   props.goods.forEach((book) => {
     sum += +(book.price * book.count);
   });
-  return <div>Повна вартість: {sum.toFixed(2)} </div>;
+  return (
+    <div className="books-total">
+      Повна вартість: {sum.toFixed(2)}
+      {props.currency}
+    </div>
+  );
 };
 
 export default BooksSum;

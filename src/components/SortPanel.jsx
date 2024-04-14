@@ -1,35 +1,41 @@
-import { Component } from "react";
+import { useState } from "react";
 
-export default class SortPanel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isSortCheked: false,
-    };
-  }
+const SortPanel = (props) => {
+  const [isSortCheked, setIsSortCheked] = useState(false);
 
-  toggleChange = () => {
-    let isSortCheked = !this.state.isSortCheked;
-    this.setState({
-      isSortCheked: isSortCheked,
-    });
-    this.props.onUpdateSort(isSortCheked);
+  const toggleChange = () => {
+    let isCheked = !isSortCheked;
+    setIsSortCheked(isCheked);
+    props.onUpdateSort(isCheked);
   };
 
-  render() {
-    return (
+  return (
+    <>
       <div className="form-check">
         <input
           type="checkbox"
           id="sort-by-name"
           className="form-control form-check-input mt-0"
-          defaultChecked={this.state.isSortCheked}
-          onChange={this.toggleChange}
+          defaultChecked={isSortCheked}
+          onChange={toggleChange}
         />
         <label htmlFor="sort-by-name" className="form-check-label mt-2">
-          Sort by name
+          Сортувати за іменем
         </label>
       </div>
-    );
-  }
-}
+      {/* <div className="form__sort-panel">
+        <select
+          class="form-select form-select-lg mb-3"
+          aria-label=".form-select-lg example"
+        >
+          <option selected>Open this select menu</option>
+          <option value="1">Name</option>
+          <option value="2">Author</option>
+          <option value="3">Id</option>
+        </select>
+      </div> */}
+    </>
+  );
+};
+
+export default SortPanel;
